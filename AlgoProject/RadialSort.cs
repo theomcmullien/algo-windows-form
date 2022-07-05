@@ -15,7 +15,13 @@ namespace AlgoProject
             Pivot = pivot;
         }
 
-        //returns the signed area value of 3 points/coords
+        /// <summary>
+        /// Calculates the signed area value of 3 Coord objects
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="c"></param>
+        /// <returns>Returns an int containing the signed area value of 3 Coord objects</returns>
         public static int SignedArea(Coord a, Coord b, Coord c)
         {
             double cmp = a.X * b.Y - b.X * a.Y + b.X * c.Y - c.X * b.Y + c.X * a.Y - a.X * c.Y;
@@ -24,7 +30,15 @@ namespace AlgoProject
             else return 0;
         }
 
-        //compares 2 points in relation of the pivot, used for comparing the most anti-clockwise point
+        /// <summary>
+        /// Compares 2 points in relation of the pivot, used for comparing the most anti-clockwise point
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns>
+        /// Returns a positive or negative value representing the coord being either anticlockwise
+        /// or clockwise in relation to the pivot and the comparing coord.
+        /// </returns>
         public int Compare(Coord x, Coord y)
         {
             int cmp = -SignedArea(Pivot, x, y);

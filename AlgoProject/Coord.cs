@@ -17,7 +17,11 @@ namespace AlgoProject
             Y = y;
         }
 
-        //calculates the distance to the pivot
+        /// <summary>
+        /// Calculates the distance between 2 Coord objects
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns>A double containing the distance from the current Coord to the passed in Coord</returns>
         public double DistTo(Coord other)
         {
             return (X - other.X) * (X - other.X) + (Y - other.Y) * (Y - other.Y);
@@ -28,7 +32,10 @@ namespace AlgoProject
             return string.Format("{0}, {1}", X, Y);
         }
 
-        //override the equals method to allow the comparing of 2 Coord objects
+        /// <summary>
+        /// Override the equals method to allow the comparing of 2 Coord objects
+        /// </summary>
+        /// <param name="obj"></param>
         public override bool Equals(object obj)
         {
             if (!(obj is Coord)) return false;
@@ -36,7 +43,10 @@ namespace AlgoProject
             return (X == other.X && Y == other.Y);
         }
 
-        //override the hashcode method to allow the comparing of 2 Coord objects
+        /// <summary>
+        /// Override the hashcode method to allow the comparing of 2 Coord objects
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             return (X + Y).GetHashCode();

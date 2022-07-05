@@ -28,14 +28,14 @@ namespace AlgoProject
             InitializeComponent();
         }
 
-        /*
-         * Initialises values of a GMapControl
-         * 
-         * Iterates through each list of POI's sorted by UserID.
-         * For each iteration a marker is added per POI to the GMap
-         * and a polygon is created from the convex hull of these points (if there are 3 or more points/markers)
-         * 
-        */
+        /// <summary>
+        /// Initialises values of a GMapControl.
+        /// Iterates through each list of POI's sorted by UserID.
+        /// For each iteration a marker is added per POI to the GMap and a polygon is
+        /// created from the convex hull of these points (if there are 3 or more points/markers)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FormMain_Load(object sender, EventArgs e)
         {
             gmap.MapProvider = BingMapProvider.Instance;
@@ -139,7 +139,10 @@ namespace AlgoProject
             Refresh();
         }
 
-        //generates a list of lists for storing all POI's sorted into lists by user ID
+        /// <summary>
+        /// Generates a list of lists for storing all POI's sorted into lists by user ID
+        /// </summary>
+        /// <returns>A list of lists of POI's is returned</returns>
         private List<List<PlaceOfInterest>> SortIntoLists()
         {
             List<PlaceOfInterest> listAllPOI = GetLocationData();
@@ -169,7 +172,10 @@ namespace AlgoProject
             return ListL;
         }
 
-        //gets a json from a given ip, json is deserialised and created into a list of POI objects
+        /// <summary>
+        /// Gets a json from a given ip, json is deserialised and created into a list of POI objects
+        /// </summary>
+        /// <returns>A list of POI's is returned</returns>
         private List<PlaceOfInterest> GetLocationData()
         {
             List<PlaceOfInterest> listPOI = new List<PlaceOfInterest>();
@@ -192,11 +198,13 @@ namespace AlgoProject
             return listPOI;
         }
 
-        /*
-         * The following method recieves an int parameter and uses a switch statement
-         * for returning a specific GMarkerGoogleType.
-         * It is used to have a different colour selected per data set.
-        */
+        /// <summary>
+        /// The following method recieves an int parameter and uses a switch statement
+        /// for returning a specific GMarkerGoogleType.
+        /// It is used to have a different colour selected per data set.
+        /// </summary>
+        /// <param name="colourPOI"></param>
+        /// <returns>A GMarkerGoogleType object</returns>
         private GMarkerGoogleType GetMarkerColour(int colourPOI)
         {
             switch (colourPOI)
@@ -220,11 +228,13 @@ namespace AlgoProject
             }
         }
 
-        /*
-         * The following method recieves an int parameter and uses a switch statement
-         * for returning a specific Brush colour.
-         * It is used to have a different colour selected per data set.
-        */
+        /// <summary>
+        /// The following method recieves an int parameter and uses a switch statement
+        /// for returning a specific Brush colour.
+        /// It is used to have a different colour selected per data set.
+        /// </summary>
+        /// <param name="colourPOI"></param>
+        /// <returns>A Brush object</returns>
         private Brush GetBrushColour(int colourPOI)
         {
             switch (colourPOI)
@@ -248,11 +258,13 @@ namespace AlgoProject
             }
         }
 
-        /*
-         * The following method recieves an int parameter and uses a switch statement
-         * for returning a specific Color.
-         * It is used to have a different colour selected per data set.
-        */
+        /// <summary>
+        /// The following method recieves an int parameter and uses a switch statement
+        /// for returning a specific Color.
+        /// It is used to have a different colour selected per data set.
+        /// </summary>
+        /// <param name="colourPOI"></param>
+        /// <returns>A Color object</returns>
         private Color GetStrokeColour(int colourPOI)
         {
             switch (colourPOI)
@@ -276,20 +288,26 @@ namespace AlgoProject
             }
         }
 
-        //Recieves the hull as a parameter and checks the validity. If valid the method will return false, if not, true.
+        /// <summary>
+        /// Recieves the hull as a parameter and checks the validity. If valid the method will return false, if not, true.
+        /// </summary>
+        /// <param name="hull"></param>
+        /// <returns>Returns a boolean depending on the validity of the hull</returns>
         private static bool IsValid(List<Coord> hull)
         {
             if (hull.Count < 3) return true;
             return RadialSort.SignedArea(hull[hull.Count - 3], hull[hull.Count - 2], hull[hull.Count - 1]) > 0;
         }
 
-        /* 
-         * The following method toggles the displaying of convex hulls onto the GMap.
-         * If the showingHull boolean is set to true the convex hulls will be removed from the
-         * gmap overlays and showingHull is set to false.
-         * If the showingHull boolean is set to false the convex hull are added to the gmap
-         * overlays and the showingHull is set to true.
-         */
+        /// <summary>
+        /// The following method toggles the displaying of convex hulls onto the GMap.
+        /// If the showingHull boolean is set to true the convex hulls will be removed from the
+        /// gmap overlays and showingHull is set to false.
+        /// If the showingHull boolean is set to false the convex hull are added to the gmap
+        /// overlays and the showingHull is set to true.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonToggleHull_Click(object sender, EventArgs e)
         {
             if (showingHull)
