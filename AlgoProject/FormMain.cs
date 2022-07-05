@@ -192,8 +192,11 @@ namespace AlgoProject
             return listPOI;
         }
 
-        //ignore this...
-        //switch statement of colours for generating different colours per set of data.
+        /*
+         * The following method recieves an int parameter and uses a switch statement
+         * for returning a specific GMarkerGoogleType.
+         * It is used to have a different colour selected per data set.
+        */
         private GMarkerGoogleType GetMarkerColour(int colourPOI)
         {
             switch (colourPOI)
@@ -217,8 +220,11 @@ namespace AlgoProject
             }
         }
 
-        //ignore this...
-        //switch statement of colours for generating different colours per set of data.
+        /*
+         * The following method recieves an int parameter and uses a switch statement
+         * for returning a specific Brush colour.
+         * It is used to have a different colour selected per data set.
+        */
         private Brush GetBrushColour(int colourPOI)
         {
             switch (colourPOI)
@@ -242,8 +248,11 @@ namespace AlgoProject
             }
         }
 
-        //ignore this...
-        //switch statement of colours for generating different colours per set of data.
+        /*
+         * The following method recieves an int parameter and uses a switch statement
+         * for returning a specific Color.
+         * It is used to have a different colour selected per data set.
+        */
         private Color GetStrokeColour(int colourPOI)
         {
             switch (colourPOI)
@@ -267,14 +276,20 @@ namespace AlgoProject
             }
         }
 
-        //Checks if the hull is valid
+        //Recieves the hull as a parameter and checks the validity. If valid the method will return false, if not, true.
         private static bool IsValid(List<Coord> hull)
         {
             if (hull.Count < 3) return true;
             return RadialSort.SignedArea(hull[hull.Count - 3], hull[hull.Count - 2], hull[hull.Count - 1]) > 0;
         }
 
-        //toggles the displaying of convex hulls onto the GMap
+        /* 
+         * The following method toggles the displaying of convex hulls onto the GMap.
+         * If the showingHull boolean is set to true the convex hulls will be removed from the
+         * gmap overlays and showingHull is set to false.
+         * If the showingHull boolean is set to false the convex hull are added to the gmap
+         * overlays and the showingHull is set to true.
+         */
         private void buttonToggleHull_Click(object sender, EventArgs e)
         {
             if (showingHull)
